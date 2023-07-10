@@ -135,4 +135,11 @@ res.redirect('results');
 })
 
 
+router.all('/results-router', function(req, res, next){
+ req.session.data = '';
+ delete req.session.data; // clear all data
+ console.log('deleted');
+ return res.redirect('index');
+})
+
 module.exports = router
