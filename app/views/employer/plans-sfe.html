@@ -1,0 +1,63 @@
+{% set pageName="What student finance loan plans are you on for your Student Finance England loans?" %}
+{% extends "employer/_BASE.html" %}
+
+
+{% block employer %}
+
+    <form action="{% if 'sfw' in data['country']%}plans-sfw{% else %}wages-or-salary-choose{% endif %}" method="post" novalidate>
+
+
+    {{ govukCheckboxes({
+      name: "plan",
+      fieldset: {
+        legend: {
+          text: pageName,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "Select all that apply."
+      },
+      items: [
+        {
+          value: "plan-1",
+          text: "Plan 1",
+          hint: {
+        text: "You'll be on this plan if you started your course before 1 September 2012"
+      }
+        },
+        {
+          value: "plan-2",
+          text: "Plan 2",
+          hint: {
+        text: "You will be on this plan if you took out a Higher Education Short Course Loan at any time, or if you started study between 1 September 2012 and 31 July 2023 for an undergraduate course, postgraduate Certificate of Education (PGCE)
+or a course that has an Advanced Learner Loan"
+      }
+        },
+        {
+          value: "plan-5",
+          text: "Plan 5",
+          hint: {
+        text: "You will be on this plan if you started study after 1 August 2023 for an undergraduate course, postgraduate Certificate of Education (PGCE)
+or a course that has an Advanced Learner Loan"
+      }
+        },
+        {
+          value: "postgraduate-loan",
+          text: "Postgraduate loan",
+          hint: {
+        text: "You will be on this plan if you did postgraduate study after 1 September 2013."
+      }
+        }
+      ]
+    }) }}
+
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+
+{% endblock %}

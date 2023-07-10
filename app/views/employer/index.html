@@ -1,0 +1,30 @@
+{% extends "layouts/main.html" %}
+{% set serviceName = "" %}
+{% set pageName="Check how much of your student loan will come out of your paycheck" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+
+
+<p>Use this service to check how much student loan will be taken from your paycheck.</p>
+
+<p>If you have more than one job, your loan threshold is calculated for each job, not in total. Use this service for each loan.</p>
+
+
+{{ govukButton({
+  text: "Start now",
+  href: "country",
+  isStartButton: true
+}) }}
+
+  </div>
+</div>
+
+{% endblock %}

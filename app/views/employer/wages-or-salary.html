@@ -1,0 +1,40 @@
+{% set pageName="What is the " + data['job-time-period'] | default("Weekly") | lower + " amount your job pays you?" %}
+
+{% extends "employer/_BASE.html" %}
+
+
+{% block employer %}
+
+
+    <form action="wages-or-salary-router" method="post" novalidate>
+
+
+      {{ govukInput({
+      id: "amount",
+      name: "amount",
+      label: {
+        text: pageName,
+        classes: "govuk-label--l",
+        isPageHeading: true
+      },
+      hint: {
+    text: "This is the amount before tax"
+  },
+      prefix: {
+        text: "£"
+      },
+      suffix: {
+        text: data['job-time-period'] | default("Weekly")  | lower
+      },
+      classes: "govuk-input--width-5",
+      spellcheck: false
+    }) }}
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+
+
+{% endblock %}

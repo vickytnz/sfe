@@ -1,0 +1,56 @@
+{% set pageName="Which funding agency did you take our a student loan with?" %}
+{% extends "employer/_BASE.html" %}
+
+
+{% block employer %}
+
+    <form action="country-router" method="post" novalidate>
+
+
+    {{ govukCheckboxes({
+      name: "country",
+      fieldset: {
+        legend: {
+          text: pageName,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "Select all that apply."
+      },
+      items: [
+        {
+          value: "sfe",
+          text: "Student Finance England",
+          hint: {
+            text: "We will need to know which loan repayment plan you are on."
+          }
+        },
+        {
+          value: "saas",
+          text: "Student Awards Agency Scotland"
+
+        },
+        {
+          value: "sfw",
+          text: "Student Finance Wales",
+          hint: {
+            text: "We will need to ask you which loan repayment plan you are on."
+          }
+        },
+        {
+          value: "sfni",
+          text: "Student Finance Northern Ireland"
+        }
+      ]
+    }) }}
+
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+
+{% endblock %}

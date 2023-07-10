@@ -1,0 +1,54 @@
+{% set pageName="What student finance loan plans are you on for your Student Finance Wales loans?" %}
+{% extends "employer/_BASE.html" %}
+
+
+{% block employer %}
+
+    <form action="wages-or-salary-choose" method="post" novalidate>
+
+
+    {{ govukCheckboxes({
+      name: "plan-sfw",
+      fieldset: {
+        legend: {
+          text: pageName,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "Select all that apply."
+      },
+      items: [
+        {
+          value: "plan-1",
+          text: "Plan 1",
+          hint: {
+        text: "You'll be on this plan if you started your course before 1 September 2012"
+      }
+        },
+        {
+          value: "plan-2",
+          text: "Plan 2",
+          hint: {
+        text: "You will be on this plan if you studied an undergraduate course or a Postgraduate Certificate of Education (PGCE) on or after 1 September 2012"
+      }
+        },
+        {
+          value: "postgraduate-loan",
+          text: "Postgraduate loan",
+          hint: {
+        text: "You will be on this plan if you did postgraduate study on or after 1 September 2012."
+      }
+        }
+      ]
+    }) }}
+
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+
+{% endblock %}

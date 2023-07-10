@@ -1,0 +1,23 @@
+{% extends "layouts/main.html" %}
+{% set serviceName = "Check how much of your student loan will come out of your paycheck" %}
+
+{% if not backHidden %}
+{% block beforeContent %}
+  <a class="govuk-back-link" onclick="history.back();" >Back</a>
+{% endblock %}
+{% endif %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+{% block employer %}
+
+{% endblock %}
+
+  </div>
+</div>
+
+{% endblock %}
