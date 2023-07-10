@@ -4,7 +4,7 @@
 
 {% block employer %}
 
-    <form action="{% if 'sfw' in data['country']%}plans-sfw{% else %}wages-or-salary-choose{% endif %}" method="post" novalidate>
+    <form action="{% if 'sfw' in data['country']%}plans-sfw{% else %}plan-router{% endif %}" method="post" novalidate>
 
 
     {{ govukCheckboxes({

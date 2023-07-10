@@ -4,7 +4,7 @@
 
 {% block employer %}
 
-    <form action="wages-or-salary-choose" method="post" novalidate>
+    <form action="plan-router" method="post" novalidate>
 
 
     {{ govukCheckboxes({
@@ -31,14 +31,7 @@
           value: "plan-2",
           text: "Plan 2",
           hint: {
-        text: "You will be on this plan if you studied an undergraduate course or a Postgraduate Certificate of Education (PGCE) on or after 1 September 2012"
-      }
-        },
-        {
-          value: "postgraduate-loan",
-          text: "Postgraduate loan",
-          hint: {
-        text: "You will be on this plan if you did postgraduate study on or after 1 September 2012."
+        text: "You will be on this plan if you studied at an undergraduate or postgraduate level on or after 1 September 2012"
       }
         }
       ]
