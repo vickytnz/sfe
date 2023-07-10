@@ -9,37 +9,28 @@ router.all('/country-router', function(req, res, next){
 
 
 var country = req.session.data['country'] // grabs variable
-/*
-if(!country){
-  res.redirect('country'); // bounce back to page as stuff won't work otherwise
-}
-else { */
 
-/*
-  if (country.indexOf('saas') >= 0 ){
-    req.session.data['plan'] = ["plan-4"]; // all scottish loans are plan 4
-    console.log("scotland" + req.session.data['plan'] )
-  }
-  if (country.indexOf('sfni') >= 0 ){
-    req.session.data['plan'] = ["plan-1"]; // all NI loans are plan 4
-  } */
+
+console.log("country is " + country);
+
+if (country) {
 
   if ((country.indexOf('sfe') == -1) && (country.indexOf('sfw') == -1) ){ // simple redirects
 
 if ((country.indexOf('saas') >= 0) &&  (country.indexOf('sfni') >= 0) ) {
   req.session.data['plans'] = ["plan-1" , "plan-4"];
-  res.redirect('plan-router');
+  return res.redirect('plan-router');
 }
 else if  (country.indexOf('sfni') >= 0)  {
     req.session.data['plans'] = ["plan-1"] ;
-    res.redirect('plan-router');
+    return res.redirect('plan-router');
 }
 else if  (country.indexOf('saas') >= 0)  {
     req.session.data['plans'] = ["plan-4" ];
-    res.redirect('plan-router');
+    return res.redirect('plan-router');
 }
 else {
-  res.redirect('country');
+  return res.redirect('country');
 }} // end ni or saas only
 
 if (country.indexOf('saas') >= 0){
@@ -52,9 +43,13 @@ if (country.indexOf('sfni') >= 0)  {
 
 }
   if (country.indexOf('sfe') >= 0){
-  res.redirect('plans-sfe');
+  return res.redirect('plans-sfe');
 } else if (country.indexOf('sfw') >= 0){
-  res.redirect('plans-sfw');
+  return res.redirect('plans-sfw');
+
+} else {
+  res.redirect('country');
+}
 
 } else {
   res.redirect('country');
