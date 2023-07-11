@@ -59,11 +59,11 @@ You will pay £{{(ugPayment + pgPayment) | round(0, "round")}} {{jobTimePeriod |
 {% if  data['postgraduate-loan-separate'] %}
 
   <h2 class="govuk-heading-m">
-  Postgraduate loans
+  Postgraduate Student Finance England loans
   </h2>
 
 {% if pgPayment == 0 %}
-  <p>£{{amount}} is £{{pgDifference}} under the repayment threshold of £{{pgThreshold}} on your postgraduate student loan. </p>
+  <p>£{{amount}} is £{{pgDifference}} under the repayment threshold of £{{pgThreshold}} on your postgraduate Student Finance England loan. </p>
 
 
   <p>Even if you do not have to pay, your loan will still have interest added to it. This amount is currently {{data['postgraduate-loan']['interest'] * 100}}%.</p>
@@ -82,7 +82,7 @@ You will pay £{{(ugPayment + pgPayment) | round(0, "round")}} {{jobTimePeriod |
   {% if data['undergraduate-loan-separate']  %}
 
   <h2 class="govuk-heading-m">
-  Undergraduate loans
+Other student loans
   </h2>
   {% if ugPayment == 0 %}
 
@@ -100,7 +100,7 @@ You will not have to pay any student loan back on on your {{jobTimePeriod | lowe
 {% else %}
 
 
-<p>You will pay £{{ugPayment | round(0, "round")}} {{jobTimePeriod | lower }} on your undergraduate student loan.
+<p>You will pay £{{ugPayment | round(0, "round")}} {{jobTimePeriod | lower }} on your {% if  data['postgraduate-loan-separate'] %}other {% endif %}student loans.
 </p>
 
 <p>This is because £{{amount }} is £{{amount - lowestThreshold}} over the {% if data['ugPlans'] > 1%}lowest plan{% else %}{{data['lowestThresholdPlan']}}{% endif %} repayment threshold of £{{lowestThreshold}} for {{i | replace("-", " ") }} student loans. You have to pay {{ugRepay * 100}}% on your job. </p>
@@ -108,7 +108,7 @@ You will not have to pay any student loan back on on your {{jobTimePeriod | lowe
 {% if data['ugPlans'] > 1%}
 
 {{ govukInsetText({
-  text: "You are on " + data['ugPlans'] + " undergraduate loan plans (" + data['ugPlanNames']|  replace("-", " ") +  "). We take the lowest threshold to calculate if you need to pay money back. We only take the same " + (ugRepay * 100) + "%, even if you are on several plans.
+  text: "You are on " + data['ugPlans'] + " loan plans (" + data['ugPlanNames']|  replace("-", " ") +  "). We take the lowest threshold to calculate if you need to pay money back. We only take the same " + (ugRepay * 100) + "%, even if you are on several plans.
 "
 }) }}
 

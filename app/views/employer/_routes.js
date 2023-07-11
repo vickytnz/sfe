@@ -75,7 +75,9 @@ delete req.session.data['postgraduate-loan-separate'];
 var jobTimePeriod = req.session.data['job-time-period'];
 
 var planArray = [];
+
 if (req.session.data['plans']) {
+  console.log('existing plans');
    planArray = req.session.data['plans'];
 } else {
   req.session.data['plans'] = [];
@@ -84,7 +86,7 @@ if (req.session.data['plans']) {
 
 if (req.session.data['saas']) {
   planArray.push('plan-4');
-  consoloe.log("plans are " + planArray);
+  console.log("plans are " + planArray);
 }
 
 if (req.session.data['sfni'] && planArray.indexOf('plan-1') == -1 ) { // fudge as pgni is all plan 1
