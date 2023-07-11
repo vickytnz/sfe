@@ -7,13 +7,13 @@
 
 
 {% set jobTimePeriod = data['job-time-period'] %}
-{% set amount = data['amount'] %}
+{% set amount = data['amount'] | float  %}
 {% set pgPayment = 0 %}
 {% set ugPayment = 0 %}
 <!-- calculation stuff  -->
 
 {% if data['postgraduate-loan-separate'] %}
-{% set pgThreshold = data['postgraduate-loan']['threshold'][jobTimePeriod] %}
+{% set pgThreshold = data['postgraduate-loan']['threshold'][jobTimePeriod] | float %}
 
 
 {% if amount <= pgThreshold %}
@@ -29,7 +29,7 @@
 
 {% if data['undergraduate-loan-separate'] %}
 
-{% set lowestThreshold = data['lowestThreshold'] %}
+{% set lowestThreshold = data['lowestThreshold'] | float  %}
 {% set lowestThresholdPlan = data['lowestThresholdPlan'] %}
 
 {% if amount <= lowestThreshold %}
@@ -47,10 +47,10 @@
 <h1 class="govuk-heading-xl">
 
 
-{% if (ugPayment + pgPayment == 0 )%}
+{% if ((ugPayment + pgPayment) === 0 )%}
 You are under the threshold to pay back any student loans
 {% else %}
-You will pay £{{(ugPayment + pgPayment) | round(0, "round")}} {{jobTimePeriod | lower }} on your loans
+You will pay {{(ugPayment + pgPayment) | round(0, "round") | thousands | pound }} {{jobTimePeriod | lower }} on your loans
 {% endif %}
 
 
@@ -62,8 +62,8 @@ You will pay £{{(ugPayment + pgPayment) | round(0, "round")}} {{jobTimePeriod |
   Postgraduate Student Finance England loans
   </h2>
 
-{% if pgPayment == 0 %}
-  <p>£{{amount}} is £{{pgDifference}} under the repayment threshold of £{{pgThreshold}} on your postgraduate Student Finance England loan. </p>
+{% if pgPayment === 0 %}
+  <p>{{amount | thousands | pound }} is {{pgDifference | thousands | pound }} under the repayment threshold of {{pgThreshold | thousands | pound }} on your postgraduate Student Finance England loan. </p>
 
 
   <p>Even if you do not have to pay, your loan will still have interest added to it. This amount is currently {{data['postgraduate-loan']['interest'] * 100}}%.</p>
@@ -72,10 +72,10 @@ You will pay £{{(ugPayment + pgPayment) | round(0, "round")}} {{jobTimePeriod |
   {% else %}
 
 
-<p>  You will pay £{{pgPayment | round(0, "round")}} {{jobTimePeriod | lower }} on your postgraduate student loan.
+<p>  You will pay {{pgPayment | round(0, "round") | thousands | pound }} {{jobTimePeriod | lower }} on your postgraduate student loan.
   </p>
 
-  <p>This is because £{{amount}} is £{{amount - pgThreshold}} over the repayment threshold of £{{pgThreshold}} for postgraduate student loans. You have to pay {{pgRepay * 100}}% on your job. </p>
+  <p>This is because {{amount | thousands | pound}} is {{ (amount - pgThreshold) | thousands | pound}} over the repayment threshold of {{pgThreshold | thousands | pound }} for postgraduate student loans. You have to pay {{pgRepay * 100}}% on your job. </p>
   {% endif  %}{% endif  %} <!-- end postgraduate -->
 
 
@@ -91,7 +91,7 @@ Other student loans
 You will not have to pay any student loan back on on your {{jobTimePeriod | lower }} amount
 </p>
 
-<p>This is because £{{amount}} is £{{(lowestThreshold - amount)}} under the {% if data['ugPlans'] > 1%}lowest plan{% endif  %} repayment threshold of £{{lowestThreshold}} for student loans. </p>
+<p>This is because {{amount | thousands | pound}} is {{ (lowestThreshold - amount)  | thousands | pound }} under the {% if data['ugPlans'] > 1%}lowest plan{% endif  %} repayment threshold of {{lowestThreshold | thousands | pound }} for student loans. </p>
 
 
 <p>Even if you do not have to pay, your loan will still have interest added to it. This amount {% if data['ugPlans'] > 1%}varies{% else %}is currently {{data[lowestThresholdPlan]['repayment'] * 100 }}%{% endif %}.</p>
@@ -100,15 +100,15 @@ You will not have to pay any student loan back on on your {{jobTimePeriod | lowe
 {% else %}
 
 
-<p>You will pay £{{ugPayment | round(0, "round")}} {{jobTimePeriod | lower }} on your {% if  data['postgraduate-loan-separate'] %}other {% endif %}student loans.
+<p>You will pay {{ugPayment | round(0, "round") | thousands | pound }} {{jobTimePeriod | lower }} on your {% if  data['postgraduate-loan-separate'] %}other {% endif %}student loans.
 </p>
 
-<p>This is because £{{amount }} is £{{amount - lowestThreshold}} over the {% if data['ugPlans'] > 1%}lowest plan{% else %}{{data['lowestThresholdPlan']}}{% endif %} repayment threshold of £{{lowestThreshold}} for {{i | replace("-", " ") }} student loans. You have to pay {{ugRepay * 100}}% on your job. </p>
+<p>This is because {{amount | thousands | pound }} is {{(amount - lowestThreshold) | thousands | pound }} over the {% if data['ugPlans'] > 1%}lowest plan{% else %}{{data['lowestThresholdPlan'] | string | replace(" ", "- ") }}{% endif %} repayment threshold of {{lowestThreshold | thousands | pound }} for {{i |  replace("-", " ") }} student loans. You have to pay {{ugRepay * 100}}% on your job. </p>
 
 {% if data['ugPlans'] > 1%}
 
 {{ govukInsetText({
-  text: "You are on " + data['ugPlans'] + " loan plans (" + data['ugPlanNames']|  replace("-", " ") +  "). We take the lowest threshold to calculate if you need to pay money back. We only take the same " + (ugRepay * 100) + "%, even if you are on several plans.
+  text: "You are on " + data['ugPlans'] + " loan plans (" + data['ugPlanNames']  | string | replace("-", " ") | replace(",", ",  ") +  "). We take the lowest threshold to calculate if you need to pay money back. We only take the same " + (ugRepay * 100) + "%, even if you are on several plans.
 "
 }) }}
 
