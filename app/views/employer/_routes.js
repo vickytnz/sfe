@@ -17,15 +17,15 @@ if (country) {
 
   if ((country.indexOf('sfe') == -1) && (country.indexOf('sfw') == -1) ){ // simple redirects
 
-if ((country.indexOf('saas') >= 0) &&  (country.indexOf('sfni') >= 0) ) {
+if ((country.indexOf('saas') != -1) &&  (country.indexOf('sfni') != -1) ) {
   req.session.data['plans'] = ["plan-1" , "plan-4"];
   return res.redirect('plan-router');
 }
-else if  (country.indexOf('sfni') >= 0)  {
+else if  (country.indexOf('sfni') != -1)  {
     req.session.data['plans'] = ["plan-1"] ;
     return res.redirect('plan-router');
 }
-else if  (country.indexOf('saas') >= 0)  {
+else if  (country.indexOf('saas') != -1)  {
     req.session.data['plans'] = ["plan-4" ];
     return res.redirect('plan-router');
 }
@@ -33,18 +33,18 @@ else {
   return res.redirect('country');
 }} // end ni or saas only
 
-if (country.indexOf('saas') >= 0){
+if (country.indexOf('saas') != -1){
 req.session.data['saas'] = "plan-4";
 
 }
 
-if (country.indexOf('sfni') >= 0)  {
+if (country.indexOf('sfni') != -1)  {
   req.session.data['sfni'] = 'plan-1';
 
 }
-  if (country.indexOf('sfe') >= 0){
+  if (country.indexOf('sfe') != -1){
   return res.redirect('plans-sfe');
-} else if (country.indexOf('sfw') >= 0){
+} else if (country.indexOf('sfw') != -1){
   return res.redirect('plans-sfw');
 
 } else {
@@ -64,6 +64,8 @@ if (country.indexOf('sfni') >= 0)  {
 router.all('/plan-router', function(req, res, next){
 // clear all the things
 
+console.log("plan router");
+
 req.session.data['undergraduate-loan-separate'] = '';
 delete req.session.data['undergraduate-loan-separate'];
 
@@ -73,12 +75,16 @@ delete req.session.data['postgraduate-loan-separate'];
 var jobTimePeriod = req.session.data['job-time-period'];
 
 var planArray = [];
-if (req.session.data['plan']) {
-   planArray = req.session.data['plan'];
+if (req.session.data['plans']) {
+   planArray = req.session.data['plans'];
+} else {
+  req.session.data['plans'] = [];
+  planArray = req.session.data['plans'];
 }
 
 if (req.session.data['saas']) {
   planArray.push('plan-4');
+  consoloe.log("plans are " + planArray);
 }
 
 if (req.session.data['sfni'] && planArray.indexOf('plan-1') == -1 ) { // fudge as pgni is all plan 1
@@ -93,6 +99,7 @@ if (req.session.data['plan-sfw']){
     planArray.push('plan-2');
   }
 }
+
 
 if (planArray.indexOf('postgraduate-loan') >= 0){
 
@@ -127,6 +134,8 @@ req.session.data['undergraduate-loan-separate'] = '';
 delete req.session.data['undergraduate-loan-separate'];
 
 }
+
+req.session.data['plans']  = planArray;
 
 
 
