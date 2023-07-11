@@ -1,6 +1,14 @@
-{% extends "layouts/main.html" %}
+
 {% set serviceName = "" %}
 {% set pageName="Check how much of your student loan will come out of your paycheck" %}
+
+
+{% if data['theme'] and data['theme'] == 'money-helper'%}
+{% extends "employer/_BASE-money-helper.html" %}
+{% else %}
+{% extends "employer/_BASE-govuk.html" %}
+{% endif %}
+
 
 {% block content %}
 

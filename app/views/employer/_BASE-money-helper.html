@@ -1,19 +1,165 @@
-{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+{% extends "employer/_BASE-govuk.html" %}
+{% set serviceName = "Check how much of your student loan will come out of your paycheck" %}
 
-{% block pageTitle %}
-  Unbranded page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% block head %}
+
+{{super () }}
+  <!-- <link href="/govuk-frontend/all.css" rel="stylesheet"> -->
+  <style>
+  .govuk-footer, .govuk-footer a { background: #000c3a !important ; color: white !important; }
+ .govuk-header__navigation-item a {font-weight: normal !important}
+  .govuk-header__navigation-item--active {background: #ad0060 !important }
+  .govuk-header__navigation-item--active a {color: #fff !important}
+  .govuk-header__container {border-bottom: 0 !important}
+
+  .govuk-breadcrumbs__link:link, .govuk-breadcrumbs__link:visited  {
+    color: #ad0060  !important; //pink!
+  }
+h1, h2, h3, h4 {
+  color: #0f19a0 !important;
+}
+
+  @media (min-width: 48.0625em) {
+  .govuk-header__content {
+      width: 100% !important;
+      padding-left: 0 !important;
+    }
+  .govuk-header__navigation-item  {
+    padding: 10px !important;
+    margin-right: 0 !important;
+  }
+  }
+
+  .govuk-button { background-color: #ad0060  !important; //pink! }
+
+  * { font-family: Arial, sans-serif !important;  }  // mass overwrite of font
+
+    </style>
+{% endblock %}
+
+{% block header %}
+
+
+<header class="govuk-header " role="banner" data-module="govuk-header" style="background: #0f19a0;">
+  <div class="govuk-header__container govuk-width-container">
+
+    <!--
+    <div class="govuk-header__logo">
+      <a href="#" class="govuk-header__link govuk-header__link--homepage">
+        <span class="govuk-header__logotype">
+
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            class="govuk-header__logotype-crown"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 132 97"
+            height="30"
+            width="36">
+            <path
+              fill="currentColor" fill-rule="evenodd"
+              d="M25 30.2c3.5 1.5 7.7-.2 9.1-3.7 1.5-3.6-.2-7.8-3.9-9.2-3.6-1.4-7.6.3-9.1 3.9-1.4 3.5.3 7.5 3.9 9zM9 39.5c3.6 1.5 7.8-.2 9.2-3.7 1.5-3.6-.2-7.8-3.9-9.1-3.6-1.5-7.6.2-9.1 3.8-1.4 3.5.3 7.5 3.8 9zM4.4 57.2c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.5-1.5-7.6.3-9.1 3.8-1.4 3.5.3 7.6 3.9 9.1zm38.3-21.4c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.6-1.5-7.6.3-9.1 3.8-1.3 3.6.4 7.7 3.9 9.1zm64.4-5.6c-3.6 1.5-7.8-.2-9.1-3.7-1.5-3.6.2-7.8 3.8-9.2 3.6-1.4 7.7.3 9.2 3.9 1.3 3.5-.4 7.5-3.9 9zm15.9 9.3c-3.6 1.5-7.7-.2-9.1-3.7-1.5-3.6.2-7.8 3.7-9.1 3.6-1.5 7.7.2 9.2 3.8 1.5 3.5-.3 7.5-3.8 9zm4.7 17.7c-3.6 1.5-7.8-.2-9.2-3.8-1.5-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.3 3.5-.4 7.6-3.9 9.1zM89.3 35.8c-3.6 1.5-7.8-.2-9.2-3.8-1.4-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.4 3.6-.3 7.7-3.9 9.1zM69.7 17.7l8.9 4.7V9.3l-8.9 2.8c-.2-.3-.5-.6-.9-.9L72.4 0H59.6l3.5 11.2c-.3.3-.6.5-.9.9l-8.8-2.8v13.1l8.8-4.7c.3.3.6.7.9.9l-5 15.4v.1c-.2.8-.4 1.6-.4 2.4 0 4.1 3.1 7.5 7 8.1h.2c.3 0 .7.1 1 .1.4 0 .7 0 1-.1h.2c4-.6 7.1-4.1 7.1-8.1 0-.8-.1-1.7-.4-2.4V34l-5.1-15.4c.4-.2.7-.6 1-.9zM66 92.8c16.9 0 32.8 1.1 47.1 3.2 4-16.9 8.9-26.7 14-33.5l-9.6-3.4c1 4.9 1.1 7.2 0 10.2-1.5-1.4-3-4.3-4.2-8.7L108.6 76c2.8-2 5-3.2 7.5-3.3-4.4 9.4-10 11.9-13.6 11.2-4.3-.8-6.3-4.6-5.6-7.9 1-4.7 5.7-5.9 8-.5 4.3-8.7-3-11.4-7.6-8.8 7.1-7.2 7.9-13.5 2.1-21.1-8 6.1-8.1 12.3-4.5 20.8-4.7-5.4-12.1-2.5-9.5 6.2 3.4-5.2 7.9-2 7.2 3.1-.6 4.3-6.4 7.8-13.5 7.2-10.3-.9-10.9-8-11.2-13.8 2.5-.5 7.1 1.8 11 7.3L80.2 60c-4.1 4.4-8 5.3-12.3 5.4 1.4-4.4 8-11.6 8-11.6H55.5s6.4 7.2 7.9 11.6c-4.2-.1-8-1-12.3-5.4l1.4 16.4c3.9-5.5 8.5-7.7 10.9-7.3-.3 5.8-.9 12.8-11.1 13.8-7.2.6-12.9-2.9-13.5-7.2-.7-5 3.8-8.3 7.1-3.1 2.7-8.7-4.6-11.6-9.4-6.2 3.7-8.5 3.6-14.7-4.6-20.8-5.8 7.6-5 13.9 2.2 21.1-4.7-2.6-11.9.1-7.7 8.8 2.3-5.5 7.1-4.2 8.1.5.7 3.3-1.3 7.1-5.7 7.9-3.5.7-9-1.8-13.5-11.2 2.5.1 4.7 1.3 7.5 3.3l-4.7-15.4c-1.2 4.4-2.7 7.2-4.3 8.7-1.1-3-.9-5.3 0-10.2l-9.5 3.4c5 6.9 9.9 16.7 14 33.5 14.8-2.1 30.8-3.2 47.7-3.2z"></path>
+          </svg>
+
+          <span class="govuk-header__logotype-text">
+            GOV.UK
+          </span>
+        </span>
+      </a>
+    </div> -->
+    <div class="govuk-header__content">
+      <a href="#" class="govuk-header__link govuk-header__service-name" style="margin: 5px">
+        <svg fill="none" height="26" viewBox="0 0 236 33" width="177" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><clipPath id="a"><path d="m0 0h236v33h-236z"/></clipPath><g clip-path="url(#a)" fill="#fff"><path d="m13.3649 24.2123-3.45502-3.4639 4.24712-4.258h-5.05609c-5.35943 0-9.10091-3.5991-9.10091-8.78652v-6.910911h5.20774l.01685 6.218121c0 2.70354 1.76963 4.59601 4.31451 4.59601h4.6179l-4.24712-4.25806 3.45502-3.46391 6.5054 6.52227c2.0056 2.0108 2.0056 5.2719 0 7.2827z"/><path d="m24.6562.8125h5.9999l7.247 17.4209 7.2808-17.4209h5.9661v24.9401h-4.9718v-15.2074l-6.2864 15.2074h-3.9437l-6.3201-15.2074v15.2074h-4.9718z"/><path d="m53.6621 16.7791c0-5.3394 3.9437-9.25957 9.438-9.25957 5.5111 0 9.4548 3.92017 9.4548 9.25957 0 5.3395-3.9437 9.2596-9.4548 9.2596-5.4943-.0169-9.438-3.9201-9.438-9.2596zm13.921 0c0-2.9907-1.8202-5.0184-4.483-5.0184-2.6629 0-4.4662 2.0277-4.4662 5.0184 0 2.957 1.8033 4.9847 4.4662 4.9847 2.6797 0 4.483-2.0446 4.483-4.9847z"/><path d="m74.5762 7.78989h4.9718v2.50081c.9943-1.74045 2.983-2.77117 5.4268-2.77117 4.0448 0 6.674 2.92317 6.674 7.04607v11.1859h-4.9718v-10.0876c0-2.1797-1.382-3.7342-3.4381-3.7342-2.1741 0-3.6909 1.6728-3.6909 3.9877v9.8341h-4.9718z"/><path d="m111.554 19.6529c-.708 3.8863-4.112 6.3702-8.528 6.3702-6.067 0-9.2018-4.765-9.2018-9.2934 0-4.5622 2.764-9.22579 8.8478-9.22579 6.32 0 8.848 4.66359 8.848 8.75269 0 .6759-.033 1.2166-.067 1.6052h-12.8592c.3539 2.5346 1.9552 4.0891 4.4322 4.0891 1.989 0 3.304-.7773 3.691-2.3149h4.837zm-12.8928-4.917h7.9208c-.134-1.9939-1.533-3.5991-3.91-3.5991-2.241.0169-3.5895 1.1152-4.0108 3.5991z"/><path d="m123.233 25.6649-2.511 7.3333h-4.736l2.63-7.4009-6.489-17.79261h5.039l3.758 11.55761 3.742-11.55761h5.073z"/><path d="m152.98.8125v24.9401h-5.36v-10.4424h-10.23v10.4424h-5.326v-24.9401h5.326v9.9017h10.23v-9.9017z"/><path d="m173.187 19.6529c-.708 3.8863-4.112 6.3702-8.528 6.3702-6.067 0-9.202-4.765-9.202-9.2934 0-4.5622 2.764-9.22579 8.848-9.22579 6.32 0 8.848 4.66359 8.848 8.75269 0 .6759-.033 1.2166-.067 1.6052h-12.859c.354 2.5346 1.955 4.0891 4.432 4.0891 1.989 0 3.303-.7773 3.691-2.3149h4.837zm-12.893-4.917h7.921c-.135-1.9939-1.534-3.5822-3.91-3.5822-2.241 0-3.59 1.0983-4.011 3.5822z"/><path d="m180.889 0h-4.938v25.7343h4.938z"/><path d="m184.057 7.80678h4.938v1.96006c1.062-1.38556 2.848-2.24731 5.14-2.24731 5.006 0 8.208 3.66667 8.208 9.25957 0 5.593-3.489 9.2596-8.629 9.2596-2.023 0-3.759-.6759-4.719-1.8924v8.8709h-4.938zm13.415 8.97232c0-3.0245-1.77-5.0184-4.365-5.0184-2.663 0-4.399 1.9939-4.399 5.0184 0 2.9908 1.736 4.9847 4.399 4.9847 2.595 0 4.365-1.9939 4.365-4.9847z"/><path d="m221.843 19.6529c-.708 3.8863-4.112 6.3702-8.528 6.3702-6.067 0-9.202-4.765-9.202-9.2934 0-4.5622 2.764-9.22579 8.848-9.22579 6.32 0 8.848 4.66359 8.848 8.75269 0 .6759-.033 1.2166-.067 1.6052h-12.859c.354 2.5346 1.955 4.0891 4.432 4.0891 1.989 0 3.304-.7773 3.691-2.3149h4.837zm-12.893-4.917h7.921c-.134-1.9939-1.533-3.5991-3.91-3.5991-2.241.0169-3.589 1.1152-4.011 3.5991z"/><path d="m233.067 11.9276c-2.444 0-3.556 2.0276-3.556 5.086v8.7189h-4.972v-17.92781h4.972v2.99081c.96-2.24734 2.309-2.99081 4.483-2.99081h2.022v4.12291z"/></g></svg>
+
+        <span style="display: none"> Money Helper </span>
+      </a>
+      <nav aria-label="Menu" class="govuk-header__navigation ">
+        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" hidden>Menu</button>
+        <ul id="navigation" class="govuk-header__navigation-list">
+          <li class="govuk-header__navigation-item">
+            <a class="govuk-header__link" href="#">
+              Benefits
+            </a>
+          </li>
+          <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
+            <a class="govuk-header__link" href="#">
+             Everyday money
+            </a>
+          </li>
+          <li class="govuk-header__navigation-item">
+            <a class="govuk-header__link" href="#">
+              Family and care
+            </a>
+          </li>
+          <li class="govuk-header__navigation-item">
+            <a class="govuk-header__link" href="#">
+             Homes
+            </a>
+          </li>
+          <li class="govuk-header__navigation-item">
+            <a class="govuk-header__link" href="#">
+             Money troubles
+            </a>
+          </li>
+          <li class="govuk-header__navigation-item">
+            <a class="govuk-header__link" href="#">
+             Pensions and retirement
+            </a>
+          </li>
+          <li class="govuk-header__navigation-item">
+            <a class="govuk-header__link" href="#">
+             Savings
+            </a>
+          </li>
+          <li class="govuk-header__navigation-item">
+            <a class="govuk-header__link" href="#">
+             Work
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
 {% endblock %}
 
 
-
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "#"
+    },
+    {
+      text: "Everyday money",
+      href: "#"
+    },
+    {
+      text: "Student loans",
+      href: "#"
+    }
+  ]
+}) }}
+{% endblock %}
 
 {% block content %}
 
-  <h1 class="govuk-heading-xl">
-    Unbranded page template
-  </h1>
-  <p class="govuk-body-l">
-    This page doesn't use New Transport or display the GOV.UK header and footer.
-  </p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+{% block employer %}
+
+{% endblock %}
+
+{% if not backHidden %}
+  <a onclick="history.back();" >Back</a>
+{% endif %}
+
+  </div>
+</div>
 
 {% endblock %}

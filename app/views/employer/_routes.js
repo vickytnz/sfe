@@ -147,10 +147,15 @@ res.redirect('results');
 
 
 router.all('/results-router', function(req, res, next){
- req.session.data = '';
+  var tempTheme  = "";
+  if (req.session.data['theme']){
+    tempTheme = req.session.data['theme'];
+  }
+
  delete req.session.data; // clear all data
  console.log('deleted');
- return res.redirect('index');
+
+ return res.redirect('index?theme=' + tempTheme);
 })
 
 module.exports = router
