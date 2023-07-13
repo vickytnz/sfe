@@ -1,0 +1,66 @@
+
+{% set serviceName = "" %}
+{% set pageName="Check if you can apply for student finance" %}
+
+
+{% if data['theme'] and data['theme'] == 'money-helper'%}
+{% extends "employer/_BASE-money-helper.html" %}
+{% else %}
+{% extends "employer/_BASE-govuk.html" %}
+{% endif %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+
+
+
+
+<p>Getting student finance in England depends on:
+</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>your nationality or immigration status</li>
+  <li>where you live at the start of your course</li>
+  <li>where you have lived in the 3 years before your course (and sometimes up to 7 years before your course)</li>
+</ul>
+
+
+<P>Use this service to check if you can apply.</p>
+
+{{ govukInsetText({
+  html: "Even if you are eligible for student finance, you may only be able to get some grants or loans. You can get an estimate of what you can get by using the <a href='#'>student finance calculator</a>. "
+}) }}
+
+
+{{ govukButton({
+  text: "Start now",
+  href: "nationality",
+  isStartButton: true
+}) }}
+
+<h2 class="govuk-heading-m">
+  If you are not a student from England
+</h2>
+<p>There's a different process if you are:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li><a rel="external" href="http://www.saas.gov.uk/">a student from Scotland</a></li>
+  <li><a rel="external" href="http://www.studentfinancewales.co.uk/">a student from Wales</a></li>
+  <li><a rel="external" href="http://www.studentfinanceni.co.uk/">a student from Northern Ireland</a></li>
+  <li><a rel="external" href="http://www.gov.je/Working/Careers/16To19YearOlds/EnteringHigherEducation/FinancingHigherEducationCourses/FundingDegreeProfessionalQualifications/Pages/index.aspx">a student from Jersey</a></li>
+  <li><a rel="external" href="https://www.gov.gg/studentfinance">a student from Guernsey</a></li>
+  <li><a rel="external" href="https://www.gov.im/student-grants">a student from Isle of Man</a></li>
+</ul>
+
+
+  </div>
+</div>
+
+{% endblock %}

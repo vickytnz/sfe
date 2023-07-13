@@ -1,0 +1,52 @@
+{% set pageName="What nation will you live in when you start your course?" %}
+{% extends folder + "/_BASE.html" %}
+
+
+
+{% block employer %}
+
+    <form action="residency-years" method="post" novalidate>
+
+
+      {{ govukRadios({
+      name: "",
+      fieldset: {
+        legend: {
+          text: "What nation will you live in when you start your course?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+  text: "If you will move to a different nation to study, use the nation that you lived in just before you move."
+},
+      items: [
+        {
+          value: "England",
+          text: "England"
+        },
+        {
+          value: "Scotland",
+          text: "Scotland"
+        },
+        {
+          value: "Wales",
+          text: "Wales"
+        },
+        {
+          value: "Northern Ireland",
+          text: "Northern Ireland"
+        },
+        {
+          value: "Somewhere else",
+          text: "Somewhere else"
+        }
+      ]
+    }) }}
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+{% endblock %}

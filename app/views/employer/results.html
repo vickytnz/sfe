@@ -81,9 +81,12 @@ You will pay {{(ugPayment + pgPayment) | round(0, "round") | thousands | pound }
 
   {% if data['undergraduate-loan-separate']  %}
 
+  {% if  data['postgraduate-loan-separate'] %} <!-- two sets of loans -->
   <h2 class="govuk-heading-m">
 Other student loans
   </h2>
+{% endif %} <!-- end two sets of loans -->
+
   {% if ugPayment == 0 %}
 
 

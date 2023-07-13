@@ -1,0 +1,43 @@
+{% set pageName="Have you lived in the UK for the 3 years before your course" %}
+{% extends folder + "/_BASE.html" %}
+
+
+
+{% block employer %}
+
+    <form action="results" method="post" novalidate>
+
+
+
+    {{ govukRadios({
+      name: "lived-before",
+      fieldset: {
+        legend: {
+          text: "Have you lived in the UK for the 3 years before your course?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "Yes",
+          text: "Yes"
+        },
+        {
+          value: "No",
+          text: "No"
+        },
+        {
+          value: "Not sure",
+          text: "Not sure"
+        }
+      ]
+    }) }}
+
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+{% endblock %}

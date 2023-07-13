@@ -1,0 +1,63 @@
+
+{% set pageName="Results" %}
+{% set backHidden = true %}
+{% extends folder + "/_BASE.html" %}
+{% block employer %}
+
+
+
+
+
+<h1 class="govuk-heading-xl">
+Result</h1>
+
+{{ govukInsetText({
+  text: "This is an estimate. You will have to confirm your details when you apply"
+}) }}
+
+
+  <p>Based on your answers, you can apply for student finance in the UK. This is because:
+  </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>you are a British national</li>
+    <li>you will be living in England at the start of your course</li>
+    <li>you have lived in the UK for 3 years before the start of your course</li>
+  </ul>
+
+
+  <h2 class="govuk-heading-m">
+    Supporting information that you will need when you apply
+  </h2>
+
+  <p>To prove that you are eligible for student finance, when you apply you will need to give:
+  </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>proof of your nationality - either the details from your UK passport or birth certificate</li>
+    <li>the address of where you will live on the first day of your course (or if you move to study, the place you lived before you moved to study)</li>
+    <li>addresses for the 3 years before you started your course</li>
+    <li>National Insurance number - this is used to check your details with the Department for Work and Pensions.</li>
+  </ul>
+
+
+  <div class="govuk-inset-text">
+    <P>You may also need to give extra information and supporting evidence to get some loans and grants, for example: </P>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>previous study details</li>
+      <li>course details</li>
+      <li>household income</li>
+      <li>details about children you wish to get support for while studying</li>
+    </ul>
+
+
+  <P>  Check the details for the finance you want to apply for.</p>
+
+  </div>
+
+
+  <a href="results-router">Start again</a>
+
+
+{% endblock %}
