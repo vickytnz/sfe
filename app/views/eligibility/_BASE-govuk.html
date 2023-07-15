@@ -1,12 +1,26 @@
+{% set homepageUrl = folder + "/index.html" %}
+
 {% extends "layouts/main.html" %}
 {% if not (serviceName == "") %}
-{% set serviceName = "Check if you can get student finance" %}
+{% set serviceName = "Check if you apply for student finance" %}
+
 {% endif %}
-{% if not backHidden %}
+
+
+
 {% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "Prototype"
+  },
+  html: 'This is a not a real service – it is just for user research.'
+}) }}
+
+{% if not backHidden %}
   <a class="govuk-back-link" onclick="history.back();" >Back</a>
+  {% endif %}
 {% endblock %}
-{% endif %}
+
 
 {% block content %}
 

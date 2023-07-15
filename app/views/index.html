@@ -2,6 +2,16 @@
 
 {% set pageName="Home" %}
 
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "Prototype"
+  },
+  html: 'This is a not a real service – it is just for user research.'
+}) }}
+
+{% endblock %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -15,7 +25,7 @@
 
 <p><a href="employer/index">Check amount that will come out of paycheck</a></p>
 
-<p><a href="eligibility/index">Check if you are eligible for student finance from Student Finance England</a></p>
+<p><a href="eligibility/index">Check if you can apply for student finance</a></p>
 
 <p><a href="calculator-loan/index">Student finance page with loan details</a></p>
 

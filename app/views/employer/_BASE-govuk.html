@@ -2,11 +2,20 @@
 {% if not (serviceName == "") %}
 {% set serviceName = "Check how much of your student loan will come out of your paycheck" %}
 {% endif %}
-{% if not backHidden %}
+
+
 {% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "Prototype"
+  },
+  html: 'This is a not a real service – it is just for user research.'
+}) }}
+
+{% if not backHidden %}
   <a class="govuk-back-link" onclick="history.back();" >Back</a>
+  {% endif %}
 {% endblock %}
-{% endif %}
 
 {% block content %}
 

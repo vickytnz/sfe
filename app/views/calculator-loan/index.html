@@ -2,6 +2,17 @@
 {% set serviceName = "" %}
 {% set pageName="Results" %}
 
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "Prototype"
+  },
+  html: 'This is a not a real service – it is just for user research.'
+}) }}
+
+{% endblock %}
+
+
 {% block content %}
 
 

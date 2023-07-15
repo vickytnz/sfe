@@ -1,13 +1,9 @@
 
+{% set backHidden = true %}
 {% set serviceName = "" %}
 {% set pageName="Check if you can apply for student finance" %}
 
-
-{% if data['theme'] and data['theme'] == 'money-helper'%}
-{% extends "employer/_BASE-money-helper.html" %}
-{% else %}
-{% extends "employer/_BASE-govuk.html" %}
-{% endif %}
+{% extends folder + "/_BASE.html" %}
 
 
 {% block content %}
@@ -28,16 +24,25 @@
 
 <ul class="govuk-list govuk-list--bullet">
   <li>your nationality or immigration status</li>
-  <li>where you live at the start of your course</li>
-  <li>where you have lived in the 3 years before your course (and sometimes up to 7 years before your course)</li>
+  <li>your permanent home before your course ('ordinary residence')</li>
+  <li>where you have lived in the 3 years (or sometimes 7 years) before your course</li>
 </ul>
 
 
-<P>Use this service to check if you can apply.</p>
+<P>Use this tool to check:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>if you can apply for student finance</li>
+    <li>what information and supporting documents you may need when you apply to prove that you can get student finance</li>
+  </ul>
 
-{{ govukInsetText({
-  html: "Even if you are eligible for student finance, you may only be able to get some grants or loans. You can get an estimate of what you can get by using the <a href='#'>student finance calculator</a>. "
-}) }}
+  <p>Even if you can apply for student finance, you may only be able to get some grants or loans. You can get an estimate of what you can get by using the <a href='#'>student finance calculator</a>.
+  </p>
+
+  {{ govukInsetText({
+    html: "<P>Student finance eligibility rules are regularly reviewed, so the results of this tool may change in the future. You can <a href='#'>read about the results of the most recent review</a>.</P>"
+  }) }}
+
+
 
 
 {{ govukButton({

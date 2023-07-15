@@ -1,4 +1,4 @@
-{% set pageName="What nation will you live in when you start your course?" %}
+{% set pageName="Where is your permanent home at the start of your course?" %}
 {% extends folder + "/_BASE.html" %}
 
 
@@ -12,13 +12,13 @@
       name: "",
       fieldset: {
         legend: {
-          text: "What nation will you live in when you start your course?",
+          text:  pageName ,
           isPageHeading: true,
           classes: "govuk-fieldset__legend--l"
         }
       },
       hint: {
-  text: "If you will move to a different nation to study, use the nation that you lived in just before you move."
+  text: "If you will move for your course, the place you lived before you moved is your permanent home."
 },
       items: [
         {
@@ -26,7 +26,7 @@
           text: "England"
         },
         {
-          value: "Scotland",
+          value: "",
           text: "Scotland"
         },
         {
@@ -36,6 +36,14 @@
         {
           value: "Northern Ireland",
           text: "Northern Ireland"
+        },
+        {
+          value: "Isle of Man",
+          text: "Isle of Man"
+        },
+        {
+          value: "Channel Islands",
+          text: "Channel Islands"
         },
         {
           value: "Somewhere else",
