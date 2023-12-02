@@ -1,0 +1,52 @@
+{% set pageName="What archictectural qualification do you want to study?" %}
+{% extends folder + "/_BASE.html" %}
+
+
+
+{% block employer %}
+
+    <form action="qualification-architecture-router" method="post" novalidate>
+
+
+      {{ govukRadios({
+      name: "qualification-architecture",
+      fieldset: {
+        legend: {
+          text: pageName,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "MArch RIBA Part 2 course",
+          text: "MArch RIBA Part 2 course"
+        },
+      
+        {
+          divider: "or"
+        },
+          {
+            value: "None of these - show more options",
+            text: "None of these - show other options"
+          }
+        ]
+    }) }}
+
+
+
+
+
+
+
+
+
+
+
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+{% endblock %}

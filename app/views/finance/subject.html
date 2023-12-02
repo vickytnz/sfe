@@ -1,0 +1,86 @@
+{% set pageName="Do you want to study one of these subjects?" %}
+{% extends folder + "/_BASE.html" %}
+
+
+
+{% block employer %}
+
+    <form action="subject-router" method="post" novalidate>
+
+
+      {{ govukRadios({
+      name: "subject",
+      fieldset: {
+        legend: {
+          text: pageName,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+
+
+      hint: {
+        text: "Some subjects have special funding available"
+      },
+      items: [
+        {
+          value: "Teacher training",
+          text: "Teacher training"
+        },
+        {
+          value: "Dental, medical or healthcare",
+          text: "Dental, medical or healthcare"
+        },
+        {
+          value: "Social work",
+          text: "Social work"
+        },
+        {
+        value: "Music or dance",
+        text: "Music or dance"
+      },
+      {
+        value: "Architecture",
+        text: "Architecture"
+      },
+
+          {
+            value: "Agricultural and related subjects",
+            text: "Agricultural and related subjects"
+          },
+
+          {
+          value: "Sciences (biological, computer, mathematical or physical)",
+          text: "Sciences (biological, computer, mathematical or physical)"
+        },
+        {
+        value: "Technologies",
+        text: "Technologies"
+      },
+      {
+      value: "Veterinary surgeon qualifications",
+      text: "Veterinary surgeon qualifications"
+      },
+
+
+      {
+        divider: "or"
+      },
+        {
+          value: "None of these",
+          text: "None of these"
+        }
+      ]
+    }) }}
+
+
+
+
+
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+{% endblock %}

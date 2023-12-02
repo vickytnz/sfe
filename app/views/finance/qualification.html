@@ -1,0 +1,83 @@
+{% set pageName="What qualification do you want to study?" %}
+{% extends folder + "/_BASE.html" %}
+
+
+
+{% block employer %}
+
+    <form action="qualification-router" method="post" novalidate>
+
+
+      {{ govukRadios({
+      name: "qualification",
+      fieldset: {
+        legend: {
+          text: pageName,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+
+        {
+          value: "a first degree",
+          text: "a first degree",
+          hint: {
+            text: "For example, BA, BSC or BEd"
+          }
+        },
+        {
+          value: "a Higher National Diploma (HND)",
+          text: "a Higher National Diploma (HND)"
+        },
+        {
+          value: "an integrated master’s degree",
+          text: "an integrated master’s degree",
+          hint: {
+            text: "This is a degree with an extra year for masters study"
+          }
+        },
+        {
+          value: "a Foundation Degree",
+          text: "a Foundation Degree"
+        },
+        {
+          value: "a level 4 or 5 course with Higher Technical Qualifcation Approval",
+          text: "a level 4 or 5 course with Higher Technical Qualifcation Approval"
+        },
+        {
+          value: "a Masters degree",
+          text: "a Masters degree"
+        },
+        {
+          value: "a doctorate",
+          text: "a doctorate"
+        },
+        {
+          divider: "or"
+        },
+          {
+            value: "None of these - view more options",
+            text: "None of these - view more options"
+          }
+
+      ]
+    }) }}
+
+
+
+
+
+
+
+
+
+
+
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+{% endblock %}

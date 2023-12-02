@@ -41,3 +41,4 @@ router.use((req, res, next) => {
 
   router.use('/employer', require('./views/employer/\_routes'));
   router.use('/eligibility', require('./views/eligibility/\_routes'));
+  router.use('/finance', require('./views/finance/\_routes'));

@@ -1,0 +1,68 @@
+{% set pageName="What qualification do you want to study (continued)?" %}
+{% extends folder + "/_BASE.html" %}
+
+
+
+{% block employer %}
+
+    <form action="residency" method="post" novalidate>
+
+
+      {{ govukRadios({
+      name: "qualification-continued",
+      fieldset: {
+        legend: {
+          text: pageName,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+
+        {
+          value: "programme of A Levels",
+          text: "programme of A Levels",
+          hint: {
+            text: "AS or A levels"
+          }
+        },
+        {
+          value: "Access to HE Diploma",
+          text: "Access to HE Diploma"
+        },
+        {
+          value: "Level 3 to 6 vocational qualification",
+          text: "Level 3 to 6 vocational qualification",
+          hint: {
+            text: "This can include a certificate, diploma, professional or technical qualification"
+          }
+        },
+
+        {
+          divider: "or"
+        },
+          {
+            value: "None of these",
+            text: "None of these"
+          }
+
+      ]
+    }) }}
+
+
+
+
+
+
+
+
+
+
+
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+
+{% set pageName="Results" %}
+{% set backHidden = true %}
+{% extends folder + "/_BASE.html" %}
+{% block employer %}
+
+
+
+
+
+<h1 class="govuk-heading-xl">
+Result</h1>
+
+{{ govukInsetText({
+  text: "This is an estimate. You will have to confirm your details when you apply"
+}) }}
+
+
+  <p>This course can get an Advanced Learner Loan.</p>
+
+
+
+
+  <a href="results-router">Start again</a>
+
+
+{% endblock %}

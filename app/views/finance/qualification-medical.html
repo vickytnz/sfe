@@ -1,0 +1,59 @@
+{% set pageName="What medical qualification do you want to study?" %}
+{% extends folder + "/_BASE.html" %}
+
+
+
+{% block employer %}
+
+    <form action="qualification-medical-router" method="post" novalidate>
+
+
+      {{ govukRadios({
+      name: "qualification-medical",
+      fieldset: {
+        legend: {
+          text: pageName,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "DipHE in dental hygiene and dental therapy or operating department practice",
+          text: "DipHE in dental hygiene and dental therapy or operating department practice"
+        },
+        {
+          value: "Foundation Degree in dental hygiene and dental therapy",
+          text: "Foundation Degree in dental hygiene and dental therapy"
+        },
+        {
+          value: "a pre-registration postgraduate healthcare course",
+          text: "a pre-registration postgraduate healthcare coursee"
+        },
+        {
+          divider: "or"
+        },
+          {
+            value: "None of these - show more options",
+            text: "None of these - show other options"
+          }
+        ]
+    }) }}
+
+
+
+
+
+
+
+
+
+
+
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% set pageName="What teaching qualification do you want to study?" %}
+{% extends folder + "/_BASE.html" %}
+
+
+
+{% block employer %}
+
+    <form action="qualification-teaching-router" method="post" novalidate>
+
+
+      {{ govukRadios({
+      name: "qualification-teaching",
+      fieldset: {
+        legend: {
+          text: pageName,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "a Certificate of Higher Education",
+          text: "a Certificate of Higher Education"
+        },
+        {
+          value: "a Diploma of Higher Education (DipHE)",
+          text: "a Higher National Certificate (HNC)"
+        },
+        {
+          value: "an Initial Teacher Training course",
+          text: "an Initial Teacher Training course"
+        },
+        {
+          divider: "or"
+        },
+          {
+            value: "None of these - show more options",
+            text: "None of these - show other options"
+          }
+        ]
+    }) }}
+
+
+
+
+
+
+
+
+
+
+
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+{% endblock %}

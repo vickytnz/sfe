@@ -1,0 +1,43 @@
+{% set homepageUrl = folder + "/index.html" %}
+
+{% extends "layouts/main.html" %}
+{% if not (serviceName == "") %}
+{% set serviceName = "Check what financial support you can use for a qualification" %}
+
+{% endif %}
+
+
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "Prototype"
+  },
+  html: 'This is a not a real service – it is just for user research.'
+}) }}
+
+{% if not backHidden %}
+  <a class="govuk-back-link" onclick="history.back();" >Back</a>
+  {% endif %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+{% block employer %}
+
+{% endblock %}
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+  {{super()}}
+<p>Switch to:  <a href="?theme=money-helper">Money helper theme</a>  <a href="?theme=govuk">GOV.UK theme</a><p>
+{% endblock %}

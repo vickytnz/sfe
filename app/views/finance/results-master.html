@@ -1,0 +1,27 @@
+
+{% set pageName="Results" %}
+{% set backHidden = true %}
+{% extends folder + "/_BASE.html" %}
+{% block employer %}
+
+
+
+
+
+<h1 class="govuk-heading-xl">
+Result</h1>
+
+{{ govukInsetText({
+  text: "This is an estimate. You will have to confirm your details when you apply"
+}) }}
+
+
+  <p>This course can be funded by a Masters Loan.</p>
+
+<p>You will need to be eligible for student finance. You may also be able to to Disabled Student's Allowance.</p>
+
+
+  <a href="results-router">Start again</a>
+
+
+{% endblock %}

@@ -1,0 +1,65 @@
+
+{% set backHidden = true %}
+{% set serviceName = "" %}
+{% set pageName="Check what financial support you can use for a qualification" %}
+
+{% extends folder + "/_BASE.html" %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+
+
+
+
+<p>Depending on what you choose to study you may be able to get:
+</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>a loan or grant from Student Finance England</li>
+  <li>an apprenticeship</li>
+  <li>extra loans or grants for special subjects such as medicine, teaching or sciences</li>
+</ul>
+
+
+<P>Use this tool to check what you can get for study in England.
+  </p>
+
+  {{ govukInsetText({
+    html: "<P>Rules can change each year. This is regularly updated.</P>"
+  }) }}
+
+
+
+
+{{ govukButton({
+  text: "Start now",
+  href: "subject",
+  isStartButton: true
+}) }}
+
+<h2 class="govuk-heading-m">
+  If you are not a student from England
+</h2>
+<p>There's a different process if you are:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li><a rel="external" href="http://www.saas.gov.uk/">a student from Scotland</a></li>
+  <li><a rel="external" href="http://www.studentfinancewales.co.uk/">a student from Wales</a></li>
+  <li><a rel="external" href="http://www.studentfinanceni.co.uk/">a student from Northern Ireland</a></li>
+  <li><a rel="external" href="http://www.gov.je/Working/Careers/16To19YearOlds/EnteringHigherEducation/FinancingHigherEducationCourses/FundingDegreeProfessionalQualifications/Pages/index.aspx">a student from Jersey</a></li>
+  <li><a rel="external" href="https://www.gov.gg/studentfinance">a student from Guernsey</a></li>
+  <li><a rel="external" href="https://www.gov.im/student-grants">a student from Isle of Man</a></li>
+</ul>
+
+
+  </div>
+</div>
+
+{% endblock %}

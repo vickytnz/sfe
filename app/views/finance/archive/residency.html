@@ -1,0 +1,60 @@
+{% set pageName="Where is your permanent home at the start of your course?" %}
+{% extends folder + "/_BASE.html" %}
+
+
+
+{% block employer %}
+
+    <form action="residency-years" method="post" novalidate>
+
+
+      {{ govukRadios({
+      name: "",
+      fieldset: {
+        legend: {
+          text:  pageName ,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+  text: "If you will move for your course, the place you lived before you moved is your permanent home."
+},
+      items: [
+        {
+          value: "England",
+          text: "England"
+        },
+        {
+          value: "",
+          text: "Scotland"
+        },
+        {
+          value: "Wales",
+          text: "Wales"
+        },
+        {
+          value: "Northern Ireland",
+          text: "Northern Ireland"
+        },
+        {
+          value: "Isle of Man",
+          text: "Isle of Man"
+        },
+        {
+          value: "Channel Islands",
+          text: "Channel Islands"
+        },
+        {
+          value: "Somewhere else",
+          text: "Somewhere else"
+        }
+      ]
+    }) }}
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+{% endblock %}

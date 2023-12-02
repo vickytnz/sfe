@@ -1,0 +1,5 @@
+{% if data['theme'] and data['theme'] == 'money-helper'%}
+{% extends folder + "/_BASE-money-helper.html" %}
+{% else %}
+{% extends folder + "/_BASE-govuk.html" %}
+{% endif %}

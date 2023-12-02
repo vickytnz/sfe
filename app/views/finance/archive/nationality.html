@@ -1,0 +1,48 @@
+{% set pageName="What is your nationality?" %}
+{% extends folder + "/_BASE.html" %}
+
+
+
+{% block employer %}
+
+    <form action="residency" method="post" novalidate>
+
+
+      {{ govukRadios({
+      name: "nationality",
+      fieldset: {
+        legend: {
+          text: "What is your nationality?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+  text: "If you have more than one nationality, start with the first option that is listed."
+},
+      items: [
+        {
+          value: "British",
+          text: "British national"
+        },
+        {
+          value: "Irish national",
+          text: "Irish national"
+        },
+        {
+          value: "EU or EEA national",
+          text: "EU or EEA national"
+        },
+        {
+          value: "Other nationality",
+          text: "Other nationality"
+        }
+      ]
+    }) }}
+
+{{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+{% endblock %}
